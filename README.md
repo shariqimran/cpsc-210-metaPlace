@@ -4,14 +4,14 @@
 
 ***FEATURES:***
 - Bid on Virtual products
-- Create Virtual product listings
-- Get and redeem points for every product purchased
+- Create Virtual products listings
+- Get and redeem points for every products purchased
 
 ### WHAT IS IT?
 
 ***METAPLACE*** is a marketplace for the ***METAVERSE***, you
 can **bid** on virtual products as well as **list** your own. You
-can sort by price and then select a product to learn more about it 
+can sort by price and then select a products to learn more about it 
 in its description. You can **add funds** to your wallet while 
 collecting and redeeming points for **exclusive cashback rewards**. 
 Anybody with access to the internet can use this marketplace. 
@@ -24,7 +24,7 @@ in the mere future.
 
 ###*USER STORIES*
 
-- As a user I want to be able to purchase a product
+- As a user I want to be able to purchase a products
 - As a user I want to add products to sell
 - As a user I want to select an item and read its descriptions
 - As a user I want to filter by price
