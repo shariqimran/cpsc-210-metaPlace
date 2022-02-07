@@ -50,8 +50,13 @@ public class Products {
         return chosen;
     }
 
-    @Override
-    public String toString() {
-        return getName();
+    // EFFECTS: remove the item from the metaverse
+    public void removeItem(Products item) {
+        allProducts.remove(item);
     }
+//
+//    @Override
+//    public String toString() {
+//        return getName();
+//    }
 }

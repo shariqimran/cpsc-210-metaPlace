@@ -7,7 +7,7 @@ package model;
 
 import java.util.*;
 
-public class Account extends Products{
+public class Account extends Products {
 
 //    public static int POINTS_NEEDED_FOR_CASH_BACK = 2000;
 //    public static int REWARD_POINTS_PER_CENT_CHARGED = 1;
@@ -30,7 +30,7 @@ public class Account extends Products{
     public void purchase(Products item) {
 //        if (item.getPrice() <= balance) {
 //            balance -= item.getPrice();
-            purchases.add(item);
+        purchases.add(item);
         //}
     }
 
@@ -39,14 +39,14 @@ public class Account extends Products{
     }
 
 
-    @SuppressWarnings("checkstyle:WhitespaceAround")
-    public List<Products> getPurchases() {
-        Products[] elements = new Products[purchases.size()];
-        for(int i = 0; i < elements.length; i++) {
-            elements[i] = purchases.get(i);
-        }
-        return purchases;
-    }
+//    @SuppressWarnings("checkstyle:WhitespaceAround")
+//    public List<Products> getPurchases() {
+//        Products[] elements = new Products[purchases.size()];
+//        for(int i = 0; i < elements.length; i++) {
+//            elements[i] = purchases.get(i);
+//        }
+//        return purchases;
+//    }
 
     public List<Products> getPurchase() {
         return purchases;
