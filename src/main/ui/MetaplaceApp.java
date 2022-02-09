@@ -18,11 +18,16 @@ public class MetaplaceApp {
 
     private Scanner sc;
 
-
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     public MetaplaceApp() {
         runMetaplace();
     }
 
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void runMetaplace() {
         boolean keepGoing = true;
         String command = null;
@@ -33,6 +38,9 @@ public class MetaplaceApp {
             displayMenu();
             command = sc.next();
             command = command.toLowerCase();
+//            if (sc. {
+//                keepGoing = false;
+//            }
 
             if (command.equals("q")) {
                 keepGoing = false;
@@ -41,10 +49,15 @@ public class MetaplaceApp {
             }
         }
 
-        System.out.println("\nGoodbye!");
+        System.out.println("\n---------------------------------");
+        System.out.println("- Thank you for using METAPLACE -");
+        System.out.println("           Goodbye!");
+        System.out.println(("---------------------------------"));
     }
 
-
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void init() {
         productsList = new ArrayList<>(); //
 
@@ -67,17 +80,24 @@ public class MetaplaceApp {
 
     }
 
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void displayMenu() {
-        System.out.println("-------METAPLACE-------");
-        System.out.println("\nSelect from:");
-        System.out.println("\t1 -> Browse Products");
-        System.out.println("\t2 -> Create a Listing");
-        System.out.println("\t3 -> View your Purchases");
-        System.out.println("\t4 -> Wallet");
-        System.out.println("\tQ -> Quit");
+        System.out.println("\n-----------------------");
+        System.out.println("       METAPLACE       ");
         System.out.println("-----------------------");
+        System.out.println("\nSelect from:");
+        System.out.println("\t1 => Browse Products");
+        System.out.println("\t2 => Create a Listing");
+        System.out.println("\t3 => View your Purchases");
+        System.out.println("\t4 => Wallet");
+        System.out.println("\tQ => Quit");
+        System.out.println("\nUser Input: ");
+        //System.out.println("-----------------------");
     }
 
+    // REQUIRES:
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processMenuCommand(String command) {
@@ -93,165 +113,247 @@ public class MetaplaceApp {
                 break;
             case "4":
                 viewWallet();
+                break;
             default:
-                System.out.println("Selection not valid...");
+                System.out.println("\nSelection not valid...");
+                System.out.println("Please try again!");
                 break;
         }
     }
 
-    @SuppressWarnings({"checkstyle:MethodLength", "checkstyle:SuppressWarnings"})
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void viewProducts() {
+        System.out.println("\nMETAPLACE");
         for (Products product : productsList) {
             System.out.println("-----------------------");
-            System.out.printf("Name: %s%nPrice: %.0f%nDescription: %s",
+            System.out.printf("Name: %s%nPrice: $%.0f%nDescription: %s",
                     product.getName(), product.getPrice(), product.getDescription());
             System.out.println();
         }
         if (productsList.isEmpty()) {
             System.out.println();
             System.out.println("No items to display!");
-            System.out.println("Returning to menu!");
-            displayMenu();
-        }
-        System.out.println("-----------------------");
-        System.out.println("1) Purchase an Item");
-        System.out.println("2) Return to Menu");
-        System.out.println("-----------------------");
-        String selection = sc.next();
+        } else {
+            System.out.println("-----------------------");
+            System.out.printf("%nCurrent Balance: $%.0f%n", account.getBalance());
+            System.out.println("\n1) Purchase an Item");
+            System.out.println("2) Return to Menu");
+            System.out.println("\nUser Input: ");
+            String selection = sc.next(); // TODO
 
-        switch (selection) {
-            case "1":
-                purchaseItem();
-                break;
-            case "2":
-                break;
-            default:
-                System.out.println("Wrong Input! Please try again!");
-                viewProducts();
-                break;
+
+            switch (selection) {
+                case "1":
+                    purchaseItem();
+                    break;
+                case "2":
+                    System.out.println("\nReturning to menu...");
+                    break;
+                default:
+                    System.out.println("\nSelection not valid...");
+                    System.out.println("Please try again!");
+                    viewProducts();
+                    break;
+            }
+        }
+    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+
+    private void noItemsLeftToPurchase() {
+        if (productsList.isEmpty()) {
+            System.out.println("No items to display!");
+            System.out.println("Returning to menu...");
+            displayMenu();
         }
     }
 
     private void purchaseItem() {
-        System.out.println("Please enter the number of the item you wish to purchase: ");
-        int selection = Integer.parseInt(sc.next());
-        Products yourProduct = productsList.get(selection - 1);
-        account.purchase(yourProduct);
-        productsList.remove(yourProduct);
-        System.out.println("You have purchased: ");
-        for (Products p : account.getPurchase()) {
-            System.out.println(p.getName());
+        System.out.println("\nPlease enter the number of the item you wish to purchase: ");
+        if (sc.hasNextInt() && !productsList.isEmpty()) {
+            int selection = sc.nextInt();
+            if (selection > 0 && selection <= productsList.size()) {
+                Products yourProduct = productsList.get(selection - 1);
+                if (yourProduct.getPrice() <= account.getBalance()) {
+                    account.purchase(yourProduct);
+                    productsList.remove(yourProduct);
+                    System.out.println("\n   PURCHASE RECEIPT");
+                    System.out.println("-----------------------");
+                    System.out.println("Congratulations!");
+                    System.out.println("You Have Successfully Purchased:");
+                    System.out.println();
+                    System.out.printf("Name: %s, Price: $%.0f%n%nYour Remaining Balance: %.0f$",
+                            yourProduct.getName(), yourProduct.getPrice(), account.getBalance());
+                    System.out.println("\nYou are now returning to the main menu...");
+                } else {
+                    System.out.println("\nNot enough funds to purchase '" + yourProduct.getName() + "'!");
+                    System.out.println("Returning to Product Listing(s)...");
+                    viewProducts();
+                }
+            } else {
+                System.out.println("\nInput not valid...");
+                System.out.println("Please Try Again");
+                purchaseItem();
+            }
+        } else {
+            System.out.println("Input is not an Integer!");
+            System.out.println("Please Try Again");
+            String garbage = sc.next();
+            purchaseItem();
         }
 
-
-        System.out.println();
-        System.out.println("Thank you!");
-        System.out.println("You are now returning to the main menu...");
-
-
-
+//        if (selection >= 6 || selection <= 0) {
+//            System.out.println("\nSelection not valid...");
+//            System.out.println("Please try again!");
+//            purchaseItem();
+//        }
     }
 
 
-    private void viewWallet() {
-        System.out.println();
-        System.out.println("Wallet");
-        System.out.printf("%nBalance: %d$%n", account.getBalance());
-        System.out.println();
-        System.out.println("1) Add Funds");
-        System.out.println("2) Return to Menu");
-        System.out.println();
-
-        String selection = sc.next();
-
-        switch (selection) {
-            case "1":
-                System.out.println("01");
-                break;
-            case "2":
-                System.out.println("02");
-                break;
-            default:
-                System.out.println("Wrong Input! Please try again!");
-                viewWallet();
-                break;
-        }
-
-    }
-
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void listProducts() {
+        System.out.println("\nMETAPLACE LISTING");
+        System.out.println("-----------------------");
         System.out.println("1) Enter details of Listing");
         System.out.println("2) Return to Menu");
+        System.out.println("\nUser Input: ");
 
-        String selection = sc.next();
+        String selection = sc.next(); // TODO
 
         switch (selection) {
             case "1":
                 listing();
                 break;
             case "2":
+                System.out.println("\nReturning to menu...");
                 break;
             default:
-                System.out.println("Wrong Input! Please try again!");
+                System.out.println("\nSelection not valid...");
+                System.out.println("Please try again!");
                 listProducts();
                 break;
         }
 
     }
 
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void listing() {
+        System.out.println("\nYour Listing");
+        System.out.println("-----------------------");
         System.out.print("Name: ");
-        String selectionName = sc.next();
+        String selectionName = sc.next(); // TODO
         System.out.print("Price: ");
-        String selectionPrice = sc.next();
-
-
-
-//    while (Integer.parseInt(selectionPrice).is)
-//        try {
-//            Integer.parseInt(selectionPrice);
-//        } catch (Exception e) {
-//            System.out.println("Input is not an Integer!");
-//            System.out.println("Please Try Again");
-//            System.out.print("Price: ");
-//            selectionPrice = sc.next();
-//        }
-
-//        while (selectionPrice == ) {
-//            System.out.println("Wrong Input!");
-//            System.out.println("Please try again!");
-//            System.out.print("Price: ");
-//        }
-        System.out.print("Description: ");
-        String selectionDesc = sc.next();
-
-        Products newProduct = new Products(selectionName, Integer.parseInt(selectionPrice), selectionDesc);
-        productsList.add(newProduct);
-        System.out.println("!!You have successfully listed your product '" + newProduct.getName()
-                + "' in the METAPLACE!!");
-        System.out.println();
+        if (sc.hasNextInt()) {
+            double selectionPrice = sc.nextInt();
+            if (selectionPrice > 0) {
+                System.out.print("Description: ");
+                String selectionDesc = sc.next(); // TODO
+                Products newProduct = new Products(selectionName, selectionPrice, selectionDesc);
+                productsList.add(newProduct);
+                System.out.println("\nYou have successfully listed your product '" + newProduct.getName()
+                        + "' in the METAPLACE");
+                System.out.println("\nReturning to menu...");
+            } else {
+                System.out.println("\nInput not valid...");
+                System.out.println("Please enter a positive integer!");
+                listing();
+            }
+        } else {
+            String garbage = sc.next();
+            System.out.println("Input is not an Integer!");
+            System.out.println("Please Try Again");
+            listing();
+        }
     }
 
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
     private void viewPurchases() {
         if (account.getPurchase().isEmpty()) {
+            System.out.println("\nPURCHASE HISTORY");
+            System.out.println("-----------------------");
             System.out.println("No Purchases to Show!");
             System.out.println("Returning to Menu...");
-            System.out.println();
         } else {
             System.out.println();
-            System.out.println("You have purchased: ");
+            System.out.println("PURCHASE HISTORY");
+            System.out.println("-----------------------");
             for (Products p : account.getPurchase()) {
-                System.out.println(p.getName());
+                System.out.println("\n" + p.getName() + "\nPrice: " + p.getPrice());
             }
-            System.out.println("1) Return to Menu");
-            String selection = sc.next();
-
+            System.out.println("\n1) Return to Menu");
+            System.out.println("\nUser Input: ");
+            String selection = sc.next(); // TODO
             while (!selection.equals("1")) {
-                System.out.println("Wrong Input!");
-                System.out.println("Please try again");
-                selection = sc.next();
+                System.out.println("\nSelection not valid...");
+                System.out.println("Please try again!");
+                selection = sc.next(); // TODO
+            }
+            if (selection.equals("1")) {
+                System.out.println("\nReturning to menu...");
             }
         }
+    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+    private void viewWallet() {
+        System.out.println("\nWALLET");
+        System.out.println("-----------------------");
+        System.out.printf("Current Balance: $%.0f%n", account.getBalance());
+        System.out.println("\n1) Add Funds");
+        System.out.println("2) Return to Menu\n");
+        System.out.println("User Input: ");
+
+        String selection = sc.next(); // TODO
+
+        switch (selection) {
+            case "1":
+                addFunds();
+                break;
+            case "2":
+                System.out.println("\nReturning to menu...");
+                break;
+            default:
+                System.out.println("\nSelection not valid...");
+                System.out.println("Please try again!");
+                viewWallet();
+                break;
+        }
+
+    }
+
+    private void addFunds() {
+        System.out.println("\nPlease enter the amount you wish to add: ");
+        if (sc.hasNextInt()) {
+            double amount = sc.nextInt(); // TODO
+            if (amount > 0) {
+                account.reload(amount);
+                System.out.printf("%nYou have successfully added $%.0f to your account", amount);
+                System.out.printf("%nYour new balance is $%.0f%n", account.getBalance());
+            } else {
+                System.out.println("\nInput not valid...");
+                System.out.println("Please try again!");
+                String garbage = sc.next();
+                viewWallet();
+            }
+        } else {
+            System.out.println("\nInput not valid...");
+            System.out.println("Please try again!");
+            String garbage = sc.next();
+            viewWallet();
+        }
+
 
     }
 
