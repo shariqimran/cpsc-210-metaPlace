@@ -2,8 +2,6 @@ package model;
 
 import org.junit.jupiter.api.*;
 
-import java.util.ArrayList;
-import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
@@ -29,24 +27,32 @@ public class AccountTest {
     @Test
     void testReload() {
         assertEquals(0, testAccount.getBalance());
-        testAccount.reload(100);
-        assertEquals(100, testAccount.getBalance());
+        assertTrue(testAccount.reload(100));
+        assertEquals(0, testAccount.getBalance());
     }
 
     @Test
     void testZeroReload() {
-        testAccount.reload(0);
+        assertFalse(testAccount.reload(0));
+        testAccount.addMoney(0);
         assertEquals(0, testAccount.getBalance());
 
-        testAccount.reload(100);
-        testAccount.reload(0);
+        testAccount.addMoney(150);
+        testAccount.addMoney(0);
+        assertEquals(150, testAccount.getBalance());
+    }
+
+    @Test
+    void testAddMoney() {
+        assertEquals(0, testAccount.getBalance());
+        testAccount.addMoney(100);
         assertEquals(100, testAccount.getBalance());
     }
 
     @Test
-    void testMultipleReload() {
-        testAccount.reload(100);
-        testAccount.reload(100);
+    void testMultipleAddMoney() {
+        testAccount.addMoney(100);
+        testAccount.addMoney(100);
         assertEquals(200, testAccount.getBalance());
     }
 

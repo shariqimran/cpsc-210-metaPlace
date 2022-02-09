@@ -1,13 +1,33 @@
 package model;
 
-//import java.util.ArrayList;
-//import java.util.List;
+import java.util.ArrayList;
+import java.util.List;
 
 // Represents Products with a list of all products in metaplace (initially 0)
 public class Products {
     private String name;        // The product name
     private double price;       // The product price
     private String description; // The product description
+//    private List<Products> allProducts;
+
+    // CHECK , KEEP OR NOT
+//    Effects: Constructs a List for products
+//    public Products() {
+//        List<Products> allProducts = new ArrayList<>();
+//    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS:
+//    public void addProduct(Products products) {
+//        allProducts.add(products);
+//    }
+
+    // REQUIRES:
+    // MODIFIES:
+    // EFFECTS: remove the item from the metaverse
+//    public void removeItem(Products item) {
+//        allProducts.remove(item);
 
     // MODIFIES: this
     // EFFECTS: name is set to name, price is set

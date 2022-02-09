@@ -16,8 +16,19 @@ public class Account {
 
     // REQUIRES: amount > 0
     // MODIFIES: this
+    // EFFECTS: returns true if amount > 0, false otherwise
+    public boolean reload(double amount) {
+        if (amount > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // REQUIRES: amount > 0
+    // MODIFIES: this
     // EFFECTS: adds amount to balance
-    public void reload(double amount) {
+    public void addMoney(double amount) {
         balance += amount;
     }
 
@@ -38,5 +49,4 @@ public class Account {
     public List<Products> getPurchase() {
         return purchases;
     }
-
 }

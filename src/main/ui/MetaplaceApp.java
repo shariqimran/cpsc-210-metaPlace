@@ -1,7 +1,6 @@
 package ui;
 
 import model.*;
-
 import java.util.*;
 
 // Metaplace Application
@@ -11,11 +10,14 @@ public class MetaplaceApp {
     private List<Products> productsList;
     private Scanner sc;
 
+
+    // method taken from TellerApp example given to us for this project
     // EFFECTS: runs the metaplace application
     public MetaplaceApp() {
         runMetaplace();
     }
 
+    // method taken from TellerApp example given to us for this project
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runMetaplace() {
@@ -307,14 +309,13 @@ public class MetaplaceApp {
 
         if (sc.hasNextInt()) {
             double amount = sc.nextInt();
-            if (amount > 0) {
-                account.reload(amount);
+            if (account.reload(amount) == true) {
+                account.addMoney(amount);
                 System.out.printf("%nYou have successfully added $%.0f to your account", amount);
                 System.out.printf("%nYour new balance is $%.0f%n", account.getBalance());
             } else {
                 System.out.println("\nInput not valid...");
                 System.out.println("Please try again!");
-                String garbage = sc.next();
                 viewWallet();
             }
         } else {
