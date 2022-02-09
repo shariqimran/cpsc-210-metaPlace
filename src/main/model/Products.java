@@ -1,24 +1,17 @@
 package model;
 
-//Creates Products with a list of all products metaplace (initially 0)
-//Has methods to initialize a product, get price, get name and get description of product
+//import java.util.ArrayList;
+//import java.util.List;
 
-import java.util.ArrayList;
-import java.util.List;
-
+// Represents Products with a list of all products in metaplace (initially 0)
 public class Products {
-    private String name;
-    private double price;
-    private String description;
+    private String name;        // The product name
+    private double price;       // The product price
+    private String description; // The product description
 
-
-    public Products() {
-        List<Products> allProducts = new ArrayList<>();
-    }
-
-    // REQUIRES: price needs to be of integer type
     // MODIFIES: this
-    // EFFECTS: creates a product
+    // EFFECTS: name is set to name, price is set
+    //          to price, description is set to description
     public Products(String name, double price, String description) {
         this.name = name;
         this.price = price;

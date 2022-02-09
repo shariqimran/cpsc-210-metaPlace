@@ -4,22 +4,20 @@ import model.*;
 
 import java.util.*;
 
+// Metaplace Application
 public class MetaplaceApp {
 
     private Account account;
     private List<Products> productsList;
     private Scanner sc;
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: runs the metaplace application
     public MetaplaceApp() {
         runMetaplace();
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: processes user input
     private void runMetaplace() {
         boolean keepGoing = true;
         String command;
@@ -43,9 +41,8 @@ public class MetaplaceApp {
         System.out.println(("---------------------------------"));
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: initializes account and product list
     private void init() {
         productsList = new ArrayList<>();
         account = new Account();
@@ -65,9 +62,7 @@ public class MetaplaceApp {
         sc = new Scanner(System.in);
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: displays menu of options to user
     private void displayMenu() {
         System.out.println("\n-----------------------");
         System.out.println("       METAPLACE       ");
@@ -81,7 +76,6 @@ public class MetaplaceApp {
         System.out.println("\nUser Input: ");
     }
 
-    // REQUIRES:
     // MODIFIES: this
     // EFFECTS: processes user command
     private void processMenuCommand(String command) {
@@ -105,9 +99,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: shows user all products in product list
     private void viewProducts() {
         System.out.println("\nMETAPLACE");
 
@@ -120,6 +112,7 @@ public class MetaplaceApp {
         viewProductsOptions();
     }
 
+    // EFFECTS: displays product menu options, processes user command
     private void viewProductsOptions() {
         if (productsList.isEmpty()) {
             System.out.println("\nNo items to display!");
@@ -139,16 +132,14 @@ public class MetaplaceApp {
                     break;
                 default:
                     System.out.println("\nSelection not valid... \nPlease Try Again!");
-//                    System.out.println("Please try again!");
                     viewProducts();
                     break;
             }
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: conducts an item transaction
     private void purchaseItem() {
         System.out.println("\nPlease enter the number of the item you wish to purchase: ");
 
@@ -176,9 +167,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: returns purchased item receipt
     private void productReceipt(Products yourProduct) {
         System.out.println("\n   PURCHASE RECEIPT");
         System.out.println("-----------------------");
@@ -189,9 +178,7 @@ public class MetaplaceApp {
         System.out.println("\n\nYou are now returning to the main menu...");
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: displays list menu options, processes user command
     private void listProducts() {
         System.out.println("\nMETAPLACE LISTING");
         System.out.println("-----------------------");
@@ -216,9 +203,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: processes user command for name in listing menu
     private void listing() {
         System.out.println("\nYour Listing");
         System.out.println("-----------------------");
@@ -230,9 +215,8 @@ public class MetaplaceApp {
         checkListingSpecs(selectionName);
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: creates a listing
     private void checkListingSpecs(String selectionName) {
         if (sc.hasNextInt()) {
             double selectionPrice = sc.nextInt();
@@ -257,9 +241,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: shows purchase history to user, processes user command
     private void viewPurchases() {
         if (account.getPurchase().isEmpty()) {
             System.out.println("\nPURCHASE HISTORY");
@@ -283,9 +265,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: check if user has not entered the right command to proceed
     private void returnMenuOnViewPurchases(String selection) {
         while (!selection.equals("1")) {
             System.out.println("\nSelection not valid...");
@@ -294,9 +274,7 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // EFFECTS: displays wallet menu, processes user commands
     private void viewWallet() {
         System.out.println("\nWALLET");
         System.out.println("-----------------------");
@@ -322,9 +300,8 @@ public class MetaplaceApp {
         }
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
+    // MODIFIES: this
+    // EFFECTS: adds funds in wallet, processes user commands
     private void addFunds() {
         System.out.println("\nPlease enter the amount you wish to add: ");
 

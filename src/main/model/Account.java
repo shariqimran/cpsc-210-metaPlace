@@ -1,16 +1,14 @@
 package model;
 
-//Creates Account with a list of your purchases (0 initially) and your current balance
-//Has methods to purchase a product and add funds.
-
 import java.util.*;
 
+// Represents an Account with a list of your purchases (0 initially) and your current balance (0 initially)
 public class Account {
 
-    private static double balance;
-    private static List<Products> purchases;
+    private double balance;                    // Current balance of account
+    private final List<Products> purchases;    // Current purchases of account
 
-    // EFFECTS: Creates an empty List
+    // EFFECTS: creates a List, sets balance to 0
     public Account() {
         purchases = new ArrayList<>();
         balance = 0;
@@ -25,7 +23,7 @@ public class Account {
 
     // REQUIRES: balance >= item.getPrice()
     // MODIFIES: this
-    // EFFECTS: Adds chosen item to purchases list and subtracts price of item from balance
+    // EFFECTS: adds chosen item to purchases list and subtracts price of item from balance
     public void purchase(Products item) {
         purchases.add(item);
         balance -= item.getPrice();
