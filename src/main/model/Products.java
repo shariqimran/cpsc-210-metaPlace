@@ -1,9 +1,7 @@
 package model;
 
-//Has all the products in the marketplace
-//Has product descriptions and prices
-//Has product specific discount?(Lowest seller would go for said product)
-//Can list your own product with specific price and lowest you would go
+//Creates Products with a list of all products metaplace (initially 0)
+//Has methods to initialize a product, get price, get name and get description of product
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,12 +10,10 @@ public class Products {
     private String name;
     private double price;
     private String description;
-    private double discount;
-    private List<Products> allProducts;
 
-    // EFFECTS: creates empty list
+
     public Products() {
-        allProducts = new ArrayList<Products>();
+        List<Products> allProducts = new ArrayList<>();
     }
 
     // REQUIRES: price needs to be of integer type
@@ -27,20 +23,6 @@ public class Products {
         this.name = name;
         this.price = price;
         this.description = description;
-    }
-
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public void addProduct(Products products) {
-        allProducts.add(products);
-    }
-
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public List<Products> getAllProducts() {
-        return allProducts;
     }
 
     // EFFECTS: returns product price
@@ -58,23 +40,4 @@ public class Products {
         return description;
     }
 
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS:
-    public Products returnIndex(int i) {
-        Products chosen = allProducts.get(i - 1);
-        return chosen;
-    }
-
-    // REQUIRES:
-    // MODIFIES:
-    // EFFECTS: remove the item from the metaverse
-    public void removeItem(Products item) {
-        allProducts.remove(item);
-    }
-//
-//    @Override
-//    public String toString() {
-//        return getName();
-//    }
 }
