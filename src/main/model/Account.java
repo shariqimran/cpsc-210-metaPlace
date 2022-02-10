@@ -18,7 +18,7 @@ public class Account {
     // MODIFIES: this
     // EFFECTS: returns true if amount > 0, false otherwise
     public boolean reload(double amount) {
-        return amount > 0;
+        return (amount > 0);
     }
 
     // REQUIRES: amount > 0
@@ -32,8 +32,10 @@ public class Account {
     // MODIFIES: this
     // EFFECTS: adds chosen item to purchases list and subtracts price of item from balance
     public void purchase(Products item) {
-        purchases.add(item);
-        balance -= item.getPrice();
+        if (item.getPrice() <= balance) {
+            purchases.add(item);
+            balance -= item.getPrice();
+        }
     }
 
     // EFFECTS: returns current balance

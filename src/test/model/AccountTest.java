@@ -14,9 +14,9 @@ public class AccountTest {
     @BeforeEach
     void runBefore() {
         testAccount = new Account();
-        a = new Products("Red Shirt", 500, "Red");
-        b = new Products("Red Shirt", 500, "Red");
-        c = new Products("Red Shirt", 500, "Red");
+        a = new Products("Red Shirt", 10, "Red");
+        b = new Products("Red Shirt", 10, "Red");
+        c = new Products("Red Shirt", 10, "Red");
     }
 
     @Test
@@ -58,6 +58,7 @@ public class AccountTest {
 
     @Test
     void testPurchase() {
+        testAccount.addMoney(100);
         assertTrue(testAccount.getPurchase().isEmpty());
         testAccount.purchase(a);
         assertTrue(testAccount.getPurchase().contains(a));
@@ -65,6 +66,7 @@ public class AccountTest {
 
     @Test
     void testMultiplePurchase() {
+        testAccount.addMoney(100);
         testAccount.purchase(a);
         testAccount.purchase(b);
         testAccount.purchase(c);
