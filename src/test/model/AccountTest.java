@@ -66,14 +66,14 @@ public class AccountTest {
 
     @Test
     void testMultiplePurchase() {
-        testAccount.addMoney(100);
+        testAccount.addMoney(20);
         testAccount.purchase(a);
         testAccount.purchase(b);
         testAccount.purchase(c);
 
         assertTrue(testAccount.getPurchase().contains(a));
         assertTrue(testAccount.getPurchase().contains(b));
-        assertTrue(testAccount.getPurchase().contains(c));
+        assertFalse(testAccount.getPurchase().contains(c));
 
 
     }
