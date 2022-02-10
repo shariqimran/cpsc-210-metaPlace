@@ -18,11 +18,7 @@ public class Account {
     // MODIFIES: this
     // EFFECTS: returns true if amount > 0, false otherwise
     public boolean reload(double amount) {
-        if (amount > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return amount > 0;
     }
 
     // REQUIRES: amount > 0

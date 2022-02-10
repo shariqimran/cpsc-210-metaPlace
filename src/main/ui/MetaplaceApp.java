@@ -309,7 +309,7 @@ public class MetaplaceApp {
 
         if (sc.hasNextInt()) {
             double amount = sc.nextInt();
-            if (account.reload(amount) == true) {
+            if (account.reload(amount)) {
                 account.addMoney(amount);
                 System.out.printf("%nYou have successfully added $%.0f to your account", amount);
                 System.out.printf("%nYour new balance is $%.0f%n", account.getBalance());
