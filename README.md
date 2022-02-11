@@ -23,7 +23,7 @@ I wanted to know how the metaverse may grow and I do
 think this would be one of such additions to the metaverse 
 in the mere future.
 
-###*USER STORIES*
+### *USER STORIES*
 
 - As a user I want to be able to purchase products
 - As a user I want to add products to the product listing 
