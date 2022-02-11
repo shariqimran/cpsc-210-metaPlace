@@ -1,6 +1,7 @@
 package ui;
 
 import model.*;
+
 import java.util.*;
 
 // Metaplace Application
@@ -9,7 +10,6 @@ public class MetaplaceApp {
     private Account account;
     private List<Products> productsList;
     private Scanner sc;
-
 
     // method taken from TellerApp example given to us for this project
     // EFFECTS: runs the metaplace application

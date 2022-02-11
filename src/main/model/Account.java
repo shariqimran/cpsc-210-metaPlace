@@ -5,8 +5,8 @@ import java.util.*;
 // Represents an Account with a list of your purchases (0 initially) and your current balance (0 initially)
 public class Account {
 
-    private double balance;                    // Current balance of account
-    private final List<Products> purchases;    // Current purchases of account
+    private double balance;              // Current balance of account
+    private List<Products> purchases;    // Current purchases of account
 
     // EFFECTS: creates a List, sets balance to 0
     public Account() {

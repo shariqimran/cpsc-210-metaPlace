@@ -24,6 +24,7 @@ public class AccountTest {
         assertTrue(testAccount.getPurchase().isEmpty());
         assertEquals(0, testAccount.getBalance());
     }
+
     @Test
     void testReload() {
         assertEquals(0, testAccount.getBalance());
