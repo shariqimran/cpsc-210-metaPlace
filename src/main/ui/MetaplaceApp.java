@@ -11,7 +11,7 @@ public class MetaplaceApp {
     private List<Products> productsList;
     private Scanner sc;
 
-    // method taken from TellerApp example given to us for this project
+    // method taken from TellerApp example given to us for this project (Add LINK)
     // EFFECTS: runs the metaplace application
     public MetaplaceApp() {
         runMetaplace();
