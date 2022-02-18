@@ -36,5 +36,3 @@ in the mere future.
 - As a user I want to be able to save my purchase history 
   and my wallet funds if I want to. (ie: Saving my account)
 - As a user I want to load my purchases and wallet from file.
-=======
->>>>>>> 8931807e20ce6854748c8a62223dde430c122d9f
