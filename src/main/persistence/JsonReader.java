@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.stream.Stream;
 //
 //// Represents a reader that reads workroom from JSON data stored in file
@@ -85,8 +86,12 @@ public class JsonReader {
         String description = jsonObject.getString("description");
         Products p = new Products(name, price, description);
 
-        //if ()
         ac.addToProducts(p);
 
+    }
+
+    // EFFECTS: return List of NFTs
+    public static List<Products> getPurchases(Account ac) {
+        return ac.getPurchase();
     }
 }

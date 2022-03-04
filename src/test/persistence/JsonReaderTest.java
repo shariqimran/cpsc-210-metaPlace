@@ -1,6 +1,7 @@
 package persistence;
 
 import model.*;
+import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -51,16 +52,15 @@ public class JsonReaderTest {
 //            ac.addToPurchases(ac.getProducts().get(0));
             assertEquals(3, ac.getPurchase().size());
             assertEquals(8400, ac.getBalance());
-//            ac.purchase(ac.getProducts().get(4));
-//            ac.addToPurchases(ac.getProducts().get(3));
-//            assertEquals(11900, ac.getBalance());
-//            assertEquals(2, ac.getPurchase().size());
 
-//            List<Account> accountList = JsonReader.
-//            assertFalse(.isEmpty());
-//            assertEquals("monkey 1", nfts.get(0).getTitle());
-//            assertEquals("monkey 3", nfts.get(1).getTitle());
-//            assertEquals("Alex Lee", nfts.get(1).getOwner());
+            List<Products> purchases = JsonReader.getPurchases(ac);
+            assertFalse(purchases.isEmpty());
+            assertEquals("SM1 Art Piece", purchases.get(0).getName());
+            assertEquals("Product(1)", purchases.get(1).getName());
+            assertEquals("Product(1)", purchases.get(1).getName());
+
+//            reader.addStuff(ac, reader);
+
         } catch (IOException e) {
             fail("Couldn't read from file");
         }

@@ -72,8 +72,7 @@ public class JsonWriterTest {
             assertEquals(2, ac.getProducts().size());
             assertEquals(0, ac.getPurchase().size());
             assertEquals(1000, ac.getBalance());
-//            List<NFT> nfts = ac.getWatchList();
-//            assertEquals(2, nfts.size());
+
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
