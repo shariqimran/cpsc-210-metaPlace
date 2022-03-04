@@ -37,9 +37,9 @@ public class Account implements Writable {
 
     // TODO: Tests design
     public void addToProducts(Products p) {
-        if (!products.contains(p)) {
-            products.add(p);
-        }
+//        if (!products.contains(p)) {
+        products.add(p);
+//        }
 //        return null;
     }
 

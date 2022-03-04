@@ -101,9 +101,13 @@ public class AccountTest {
         assertTrue(testAccount.getProducts().contains(a));
 
         testAccount.purchase(a);
-        testAccount.purchase(b);
-
         testAccount.toJson();
+        assertFalse(testAccount.getProducts().contains(a));
+
+
+        testAccount.purchase(b);
+        testAccount.toJson();
+        assertFalse(testAccount.getProducts().contains(b));
 
         assertTrue(testAccount.getProducts().isEmpty());
     }
