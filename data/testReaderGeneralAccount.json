@@ -22,7 +22,11 @@
     }
   ],
   "purchases": [
-
+    {
+      "price": 1000,
+      "name": "Test2N",
+      "description": "Test2N"
+    }
   ],
   "Balance": 15000
 }

@@ -39,8 +39,8 @@ public class JsonReaderTest {
         JsonReader reader = new JsonReader("./data/testReaderGeneralAccount.json");
         try {
             Account ac = reader.read();
-            assertEquals(15000, ac.getBalance());
-            assertEquals(0, ac.getPurchase().size());
+            assertEquals(14000, ac.getBalance());
+            assertEquals(1, ac.getPurchase().size());
             assertEquals(4, ac.getProducts().size());
 
             ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
@@ -49,20 +49,25 @@ public class JsonReaderTest {
             ac.purchase(ac.getProducts().get(0));
             ac.purchase(ac.getProducts().get(4));
             ac.purchase(ac.getProducts().get(1));
-//            ac.addToPurchases(ac.getProducts().get(0));
-            assertEquals(3, ac.getPurchase().size());
-            assertEquals(8400, ac.getBalance());
+//          ac.addToPurchases(ac.getProducts().get(0));
+            assertEquals(4, ac.getPurchase().size());
+            assertEquals(7400, ac.getBalance());
 
             List<Products> purchases = JsonReader.getPurchases(ac);
             assertFalse(purchases.isEmpty());
-            assertEquals("SM1 Art Piece", purchases.get(0).getName());
-            assertEquals("Product(1)", purchases.get(1).getName());
-            assertEquals("Product(1)", purchases.get(1).getName());
+//          assertEquals("SM1 Art Piece", purchases.get(0).getName());
+//          assertEquals("Product(1)", purchases.get(1).getName());
+//          assertEquals("Product(1)", purchases.get(1).getName());
 
-//            reader.addStuff(ac, reader);
+            assertEquals("Test2N", purchases.get(0).getName());
+            assertEquals("SM1 Art Piece", purchases.get(1).getName());
+            assertEquals("SM1 Art Piece", purchases.get(1).getName());
+
+//          reader.addStuff(ac, reader);
 
         } catch (IOException e) {
             fail("Couldn't read from file");
         }
     }
 }
+
