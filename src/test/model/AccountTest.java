@@ -78,4 +78,27 @@ public class AccountTest {
 
 
     }
+
+    @Test
+    void testAddToProducts() {
+        testAccount.addMoney(20);
+        testAccount.addToProducts(a);
+        assertTrue(testAccount.getProducts().contains(a));
+    }
+
+    @Test
+    void testToJson() {
+        testAccount.addMoney(20);
+        testAccount.addToProducts(a);
+        testAccount.addToProducts(b);
+
+        assertTrue(testAccount.getProducts().contains(a));
+
+        testAccount.purchase(a);
+        testAccount.purchase(b);
+
+        testAccount.toJson();
+
+        assertTrue(testAccount.getProducts().isEmpty());
+    }
 }
