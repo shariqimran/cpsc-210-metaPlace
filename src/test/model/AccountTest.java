@@ -15,8 +15,8 @@ public class AccountTest {
     void runBefore() {
         testAccount = new Account();
         a = new Products("Red Shirt", 10, "Red");
-        b = new Products("Red Shirt", 10, "Red");
-        c = new Products("Red Shirt", 10, "Red");
+        b = new Products("Blue Shirt", 10, "Blue");
+        c = new Products("Green Shirt", 10, "Green");
     }
 
     @Test
@@ -84,6 +84,8 @@ public class AccountTest {
         testAccount.addMoney(20);
         testAccount.addToProducts(a);
         assertTrue(testAccount.getProducts().contains(a));
+
+        assertEquals(0, testAccount.getProducts().lastIndexOf(a));
     }
 
     @Test

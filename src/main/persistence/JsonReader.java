@@ -69,7 +69,6 @@ public class JsonReader {
         String description = jsonObject.getString("description");
         Products product = new Products(name, price, description);
         ac.purchase(product);
-
     }
 
     public void addProductOnMarketPlace(Account ac, JSONObject jsonObject) {
