@@ -57,9 +57,9 @@ public class Account implements Writable {
         }
     }
 
-    public void addToPurchases(Products item) {
-        purchases.add(item);
-    }
+//    public void addToPurchases(Products item) {
+//        purchases.add(item);
+//    }
 
     // EFFECTS: returns current balance
     public double getBalance() {

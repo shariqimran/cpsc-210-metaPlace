@@ -46,11 +46,11 @@ public class JsonReaderTest {
 
             assertEquals(5, ac.getProducts().size());
             ac.purchase(ac.getProducts().get(0));
-          //ac.addToPurchases(ac.getProducts().get(0));
+//            ac.addToPurchases(ac.getProducts().get(0));
             assertEquals(12000, ac.getBalance());
             assertEquals(1, ac.getPurchase().size());
             ac.purchase(ac.getProducts().get(4));
-          //ac.addToPurchases(ac.getProducts().get(3));
+//            ac.addToPurchases(ac.getProducts().get(3));
             assertEquals(11900, ac.getBalance());
             assertEquals(2, ac.getPurchase().size());
 
