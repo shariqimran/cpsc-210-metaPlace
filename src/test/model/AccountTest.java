@@ -14,6 +14,7 @@ public class AccountTest {
     private Products a;
     private Products b;
     private Products c;
+    private Products Test2;
 
     @BeforeEach
     void runBefore() {
@@ -21,6 +22,7 @@ public class AccountTest {
         a = new Products("Red Shirt", 10, "Red");
         b = new Products("Blue Shirt", 10, "Blue");
         c = new Products("Green Shirt", 10, "Green");
+        Test2 = new Products("Test2", 100, "Test2");
     }
 
     @Test
@@ -108,6 +110,12 @@ public class AccountTest {
         testAccount.purchase(b);
         testAccount.toJson();
         assertFalse(testAccount.getProducts().contains(b));
+
+
+        testAccount.purchase(Test2);
+        testAccount.toJson();
+        assertFalse(testAccount.getProducts().contains(Test2));
+
 
         assertTrue(testAccount.getProducts().isEmpty());
     }

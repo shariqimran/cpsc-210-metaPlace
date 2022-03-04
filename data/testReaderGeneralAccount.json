@@ -26,6 +26,11 @@
       "price": 1000,
       "name": "Test2N",
       "description": "Test2N"
+    },
+    {
+      "price": 100,
+      "name": "Test2",
+      "description": "Test2"
     }
   ],
   "Balance": 15000
