@@ -1,0 +1,28 @@
+{
+  "Products": [
+    {
+      "price": 3000,
+      "name": "SM1 Art Piece",
+      "description": "Get Exclusive Product Drops from the SM Website!"
+    },
+    {
+      "price": 3500,
+      "name": "SM2 Art Piece",
+      "description": "Get Exclusive Product Drops from the SM Website!"
+    },
+    {
+      "price": 6000,
+      "name": "KERS Collectors item",
+      "description": "Limited Edition KERS Black & White Figurine!"
+    },
+    {
+      "price": 100,
+      "name": "Test2",
+      "description": "Test2"
+    }
+  ],
+  "purchases": [
+
+  ],
+  "Balance": 15000
+}

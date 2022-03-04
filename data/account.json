@@ -1,9 +1,37 @@
 {
     "Products": [
-
+        {
+            "price": 3000,
+            "name": "SM1 Art Piece",
+            "description": "Get Exclusive Product Drops from the SM Website!"
+        },
+        {
+            "price": 3500,
+            "name": "SM2 Art Piece",
+            "description": "Get Exclusive Product Drops from the SM Website!"
+        },
+        {
+            "price": 6000,
+            "name": "KERS Collectors item",
+            "description": "Limited Edition KERS Black & White Figurine!"
+        }
     ],
     "purchases": [
-
+        {
+            "price": 12,
+            "name": "a",
+            "description": "a"
+        },
+        {
+            "price": 800,
+            "name": "Sapphire Blue Shirt",
+            "description": "Brand New!"
+        },
+        {
+            "price": 500,
+            "name": "Red Shirt",
+            "description": "Used Like New!"
+        }
     ],
-    "Balance": 293
+    "Balance": 98981
 }
