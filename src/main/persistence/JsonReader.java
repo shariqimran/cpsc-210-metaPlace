@@ -11,9 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Stream;
-//
-//// Represents a reader that reads workroom from JSON data stored in file
 
+// Represents a reader that reads workroom from JSON data stored in file
 public class JsonReader {
     private String source;
 
@@ -22,6 +21,7 @@ public class JsonReader {
         this.source = source;
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // EFFECTS: reads workroom from file and returns it;
     // throws IOException if an error occurs reading data from file
     public Account read() throws IOException {
@@ -30,6 +30,7 @@ public class JsonReader {
         return parseAccount(jsonObject);
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // EFFECTS: reads source file as string and returns it
     private String readFile(String source) throws IOException {
         StringBuilder contentBuilder = new StringBuilder();
@@ -41,6 +42,7 @@ public class JsonReader {
         return contentBuilder.toString();
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // EFFECTS: parses account from JSON object and returns it
     private Account parseAccount(JSONObject jsonObject) {
         double balance = jsonObject.getDouble("Balance");
@@ -51,6 +53,7 @@ public class JsonReader {
         return ac;
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: ac
     // EFFECTS: parses purchases from JSON object and adds them to accounts
     public void addStuff(Account ac, JSONObject jsonObject) {
@@ -62,8 +65,9 @@ public class JsonReader {
 
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: ac
-    // EFFECTS: parses purchases from JSON object and adds it to workroom
+    // EFFECTS: parses purchases from JSON object and adds it to account
     private void addPurchase(Account ac, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double price = jsonObject.getDouble("price");
@@ -72,6 +76,8 @@ public class JsonReader {
         ac.purchase(product);
     }
 
+    // MODIFIES: ac
+    // EFFECTS: parses purchases from JSON object and adds it to account
     public void addProductOnMarketPlace(Account ac, JSONObject jsonObject) {
         JSONArray jsonArray = jsonObject.getJSONArray("Products");
         for (Object json : jsonArray) {
@@ -80,17 +86,17 @@ public class JsonReader {
         }
     }
 
+    // MODIFIES: ac
+    // EFFECTS: parses purchases from JSON object and adds it to account
     public void addProduct(Account ac, JSONObject jsonObject) {
         String name = jsonObject.getString("name");
         double price = jsonObject.getDouble("price");
         String description = jsonObject.getString("description");
         Products p = new Products(name, price, description);
-
         ac.addToProducts(p);
-
     }
 
-    // EFFECTS: return List of NFTs
+    // EFFECTS: return List of purchases
     public static List<Products> getPurchases(Account ac) {
         return ac.getPurchase();
     }

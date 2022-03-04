@@ -36,6 +36,9 @@ public class Account implements Writable {
     }
 
     // TODO: Tests design
+    // REQUIRES: Product
+    // MODIFIES: this
+    // EFFECTS: adds product to products
     public void addToProducts(Products p) {
 //        if (!products.contains(p)) {
         products.add(p);
@@ -73,7 +76,7 @@ public class Account implements Writable {
     }
 
 
-
+    // EFFECTS: Removes already purchases Product from Products list
     @Override
     public JSONObject toJson() {
         List<String> titlesOfPurchases = new ArrayList<>();

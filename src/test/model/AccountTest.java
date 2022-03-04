@@ -112,9 +112,10 @@ public class AccountTest {
         assertTrue(testAccount.getProducts().isEmpty());
     }
 
+    //Check if to delete
     @Test
     void testToJsonIF() {
-        testAccount.addMoney(20);;
+        testAccount.addMoney(20);
         products.add(a);
         products.add(b);
 

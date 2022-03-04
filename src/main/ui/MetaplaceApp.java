@@ -1,6 +1,7 @@
 package ui;
 
 //import com.oracle.javafx.jmx.json.JSONReader;
+
 import model.*;
 import persistence.JsonReader;
 import persistence.JsonWriter;
@@ -21,8 +22,7 @@ public class MetaplaceApp {
     private JsonReader jsonReader;
 
 
-
-    // method taken from TellerApp example given to us for this project
+    // method taken from Teller App, (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
     // EFFECTS: runs the metaplace application
     public MetaplaceApp() {
         jsonWriter = new JsonWriter(JSON_STORE);
@@ -31,7 +31,7 @@ public class MetaplaceApp {
         runMetaplace();
     }
 
-    // method taken from TellerApp example given to us for this project
+    // method taken from Teller App, (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runMetaplace() {
@@ -57,6 +57,8 @@ public class MetaplaceApp {
         System.out.println(("---------------------------------"));
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
+    // EFFECTS: saves the workroom to file
     private void saveAccount() {
         try {
             jsonWriter.open();
@@ -96,15 +98,9 @@ public class MetaplaceApp {
             for (Products p : productsList) {
                 account.addToProducts(p);
             }
-
-
         } else {
             productsList = account1.getProducts();
-
-
-
         }
-
         sc = new Scanner(System.in);
 
     }
@@ -382,6 +378,7 @@ public class MetaplaceApp {
         }
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: this
     // EFFECTS: loads workroom from file
     private void loadWorkRoom() {

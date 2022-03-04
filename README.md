@@ -31,8 +31,14 @@ in the mere future.
   (list of products you see)
 - As a user I want to view my purchase history
 - As a user I want to add funds to my account
-  and view my funds deducted when I buy a product. 
-<<<<<<< HEAD
+  and view my funds deducted when I buy a product.
 - As a user I want to be able to save my purchase history 
   and my wallet funds if I want to. (ie: Saving my account)
-- As a user I want to load my purchases and wallet from file.
+- As a user, when I quit, I want to my wallet history and 
+purchase history to be automatically saved.
+- As a user, when I start the application, I want my wallet
+and purchases to load from file.
+
+### Citation:
+- Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
+- JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)

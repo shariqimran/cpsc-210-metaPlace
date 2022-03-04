@@ -8,8 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.List;
-
+// Class taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
 // Represents a writer that writes JSON representation of workroom to file
+
 public class JsonWriter {
     private static final int TAB = 4;
     private PrintWriter writer;
@@ -20,6 +21,7 @@ public class JsonWriter {
         this.destination = destination;
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: this
     // EFFECTS: opens writer; throws FileNotFoundException if destination file cannot
     // be opened for writing
@@ -27,6 +29,7 @@ public class JsonWriter {
         writer = new PrintWriter(new File(destination));
     }
 
+    // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: this
     // EFFECTS: writes JSON representation of workroom to file
     public void write(Account ac) {
