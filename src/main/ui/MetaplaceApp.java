@@ -1,20 +1,33 @@
 package ui;
 
+//import com.oracle.javafx.jmx.json.JSONReader;
 import model.*;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.*;
 
 // Metaplace Application
-//Go?
 public class MetaplaceApp {
 
     private Account account;
-    private List<Products> productsList;
+    private Account account1;
+    protected List<Products> productsList;
     private Scanner sc;
+    private static final String JSON_STORE = "./data/account.json";
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    // method taken from TellerApp example given to us for this project (Add LINK)
+
+
+    // method taken from TellerApp example given to us for this project
     // EFFECTS: runs the metaplace application
     public MetaplaceApp() {
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
+        productsList = new ArrayList<>();
         runMetaplace();
     }
 
@@ -24,7 +37,6 @@ public class MetaplaceApp {
     private void runMetaplace() {
         boolean keepGoing = true;
         String command;
-
         init();
 
         while (keepGoing) {
@@ -32,6 +44,7 @@ public class MetaplaceApp {
             command = sc.next();
             command = command.toLowerCase();
             if (command.equals("q")) {
+                saveAccount();
                 keepGoing = false;
             } else {
                 processMenuCommand(command);
@@ -44,29 +57,63 @@ public class MetaplaceApp {
         System.out.println(("---------------------------------"));
     }
 
+    private void saveAccount() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(account);
+            jsonWriter.close();
+            System.out.println("Saved");
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to" + JSON_STORE);
+        }
+    }
+
+
     // MODIFIES: this
     // EFFECTS: initializes account and product list
     private void init() {
-        productsList = new ArrayList<>();
-        account = new Account();
 
-        Products product1 = new Products("Sapphire Blue Shirt", 800, "Brand New!");
-        Products product2 = new Products("Red Shirt", 500, "Used Like New!");
-        Products product3 = new Products("SM1 Art Piece", 3000, "Get Exclusive Product Drops from the SM Website!");
-        Products product4 = new Products("SM2 Art Piece", 3500, "Get Exclusive Product Drops from the SM Website!");
-        Products product5 = new Products("KERS Collectors item", 6000, "Limited Edition KERS Black & White Figurine!");
+        loadWorkRoom();
+        account = account1;
 
-        productsList.add(product1);
-        productsList.add(product2);
-        productsList.add(product3);
-        productsList.add(product4);
-        productsList.add(product5);
+        if (account.getProducts().isEmpty()) {
+            Products product1 = new Products("Sapphire Blue Shirt", 800, "Brand New!");
+            Products product2 = new Products("Red Shirt", 500, "Used Like New!");
+            Products product3 = new Products("SM1 Art Piece", 3000,
+                    "Get Exclusive Product Drops from the SM Website!");
+            Products product4 = new Products("SM2 Art Piece", 3500,
+                    "Get Exclusive Product Drops from the SM Website!");
+            Products product5 = new Products("KERS Collectors item", 6000,
+                    "Limited Edition KERS Black & White Figurine!");
+
+            productsList.add(product1);
+            productsList.add(product2);
+            productsList.add(product3);
+            productsList.add(product4);
+            productsList.add(product5);
+
+            for (Products p : productsList) {
+                account.addToProducts(p);
+            }
+
+
+        } else {
+            productsList = account1.getProducts();
+
+
+
+        }
 
         sc = new Scanner(System.in);
+
     }
+
 
     // EFFECTS: displays menu of options to user
     private void displayMenu() {
+//        System.out.println(account.getProducts());
+//        System.out.println(account.getPurchase());
         System.out.println("\n-----------------------");
         System.out.println("       METAPLACE       ");
         System.out.println("-----------------------");
@@ -75,7 +122,7 @@ public class MetaplaceApp {
         System.out.println("\t2 => Create a Listing");
         System.out.println("\t3 => View your Purchases");
         System.out.println("\t4 => Wallet");
-        System.out.println("\tQ => Quit");
+        System.out.println("\tQ => Save and Quit");
         System.out.println("\nUser Input: ");
     }
 
@@ -107,8 +154,11 @@ public class MetaplaceApp {
         System.out.println("\nMETAPLACE");
 
         for (Products product : productsList) {
+            double num = 0;
+            num = productsList.indexOf(product) + 1;
+
             System.out.println("-----------------------");
-            System.out.printf("Name: %s%nPrice: $%.0f%nDescription: %s",
+            System.out.printf("Number: %.0f%nName: %s%nPrice: $%.0f%nDescription: %s", num,
                     product.getName(), product.getPrice(), product.getDescription());
             System.out.println();
         }
@@ -153,6 +203,7 @@ public class MetaplaceApp {
                 if (yourProduct.getPrice() <= account.getBalance()) {
                     account.purchase(yourProduct);
                     productsList.remove(yourProduct);
+                    //remove(yourProduct);
                     productReceipt(yourProduct);
                 } else {
                     System.out.println("\nNot enough funds to purchase '" + yourProduct.getName() + "'!");
@@ -176,7 +227,7 @@ public class MetaplaceApp {
         System.out.println("-----------------------");
         System.out.println("Congratulations!");
         System.out.println("You Have Successfully Purchased:");
-        System.out.printf("%nName: %s, Price: $%.0f%nYour Remaining Balance: %.0f$",
+        System.out.printf("%nName: %s%nPrice: $%.0f%n%nYour Remaining Balance: $%.0f",
                 yourProduct.getName(), yourProduct.getPrice(), account.getBalance());
         System.out.println("\n\nYou are now returning to the main menu...");
     }
@@ -228,6 +279,7 @@ public class MetaplaceApp {
                 String selectionDesc = sc.next();
                 Products newProduct = new Products(selectionName, selectionPrice, selectionDesc);
                 productsList.add(newProduct);
+                //account.addToProducts(newProduct); // -----
                 System.out.println("\nYou have successfully listed your product '" + newProduct.getName()
                         + "' in the METAPLACE");
                 System.out.println("\nReturning to menu...");
@@ -252,11 +304,14 @@ public class MetaplaceApp {
             System.out.println("No Purchases to Show!");
             System.out.println("Returning to Menu...");
         } else {
-            System.out.println();
-            System.out.println("PURCHASE HISTORY");
+            System.out.println("\nPURCHASE HISTORY");
             System.out.println("-----------------------");
+            int num = 0;
             for (Products p : account.getPurchase()) {
-                System.out.println("\n" + p.getName() + "\nPrice: " + p.getPrice());
+                num++;
+                double price = p.getPrice();
+                System.out.println("-" + num + "-" + "\nName: "
+                        + p.getName() + "\nPrice: $" + String.format("%.0f", price) + "\n");
             }
             System.out.println("\n1) Return to Menu");
             System.out.println("\nUser Input: ");
@@ -324,6 +379,17 @@ public class MetaplaceApp {
             System.out.println("Please try again!");
             String garbage = sc.next();
             viewWallet();
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            account1 = jsonReader.read();
+            System.out.println("Loaded from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

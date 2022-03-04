@@ -1,5 +1,11 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+import java.util.ArrayList;
+import java.util.List;
+
 // Represents Products with a list of all products in metaplace (initially 0)
 public class Products {
     private String name;        // The product name
@@ -13,6 +19,7 @@ public class Products {
         this.name = name;
         this.price = price;
         this.description = description;
+
     }
 
     // EFFECTS: returns product price
@@ -29,5 +36,6 @@ public class Products {
     public String getDescription() {
         return description;
     }
+
 
 }
