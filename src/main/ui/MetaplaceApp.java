@@ -5,6 +5,7 @@ import model.*;
 import java.util.*;
 
 // Metaplace Application
+//Go?
 public class MetaplaceApp {
 
     private Account account;
