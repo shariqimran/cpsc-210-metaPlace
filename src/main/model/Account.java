@@ -10,7 +10,6 @@ import java.util.function.BooleanSupplier;
 // Represents an Account with a list of your purchases (0 initially) and your current balance (0 initially)
 public class Account implements Writable {
 
-
     private double balance;              // Current balance of account
     private List<Products> purchases;    // Current purchases of account
     private List<Products> products;     // list of all products on the app

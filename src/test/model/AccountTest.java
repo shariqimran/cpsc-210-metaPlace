@@ -2,11 +2,15 @@ package model;
 
 import org.junit.jupiter.api.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class AccountTest {
 
     private Account testAccount;
+    List<Products> products = new ArrayList<>();
     private Products a;
     private Products b;
     private Products c;
@@ -102,5 +106,21 @@ public class AccountTest {
         testAccount.toJson();
 
         assertTrue(testAccount.getProducts().isEmpty());
+    }
+
+    @Test
+    void testToJsonIF() {
+        testAccount.addMoney(20);;
+        products.add(a);
+        products.add(b);
+
+        testAccount.purchase(a);
+        testAccount.purchase(b);
+        products.remove(a);
+        products.remove(b);
+
+        testAccount.toJson();
+
+        assertTrue(products.isEmpty());
     }
 }
