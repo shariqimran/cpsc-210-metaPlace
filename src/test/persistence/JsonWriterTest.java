@@ -53,8 +53,8 @@ public class JsonWriterTest {
     void testWriterGeneralWorkroom() {
         try {
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralAccount.json");
-            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
-            ac.addToProducts(new Products("Product(2)", 100, "Product(2)"));
+            ac.addToProducts(new Products("prod1", 100, "prod1"));
+            ac.addToProducts(new Products("Product(2)", 100, "Product2"));
             ac.addToProducts(new Products("Red", 100, "Red"));
             ac.addMoney(1000);
             assertEquals(1000, ac.getBalance());
@@ -64,7 +64,7 @@ public class JsonWriterTest {
             writer.write(ac);
             writer.close();
             assertEquals(3, ac.getProducts().size()); //2
-            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
+            ac.addToProducts(new Products("prod1", 100, "prod1"));
             assertEquals(4, ac.getProducts().size());//4
             ac.purchase(ac.getProducts().get(1));
 
@@ -81,7 +81,7 @@ public class JsonWriterTest {
 //
             ac.purchase(ac.getProducts().get(0));
             ac.purchase(ac.getProducts().get(2));
-            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
+            ac.addToProducts(new Products("prod1", 100, "prod1"));
             wr.open();
             wr.write(ac);
             wr.close();
