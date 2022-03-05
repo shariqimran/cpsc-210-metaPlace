@@ -53,26 +53,38 @@ public class JsonWriterTest {
     void testWriterGeneralWorkroom() {
         try {
             JsonWriter writer = new JsonWriter("./data/testWriterGeneralAccount.json");
+            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
             ac.addToProducts(new Products("Product(2)", 100, "Product(2)"));
-            ac.addToProducts(new Products("Product(2)", 100, "Product(2)"));
+            ac.addToProducts(new Products("Red", 100, "Red"));
             ac.addMoney(1000);
             assertEquals(1000, ac.getBalance());
-//            assertEquals(4, ac.getProducts().size());
-//            ac.purchase(ac.getProducts().get(1));
+            assertEquals(3, ac.getProducts().size()); //was 4
+            //ac.purchase(ac.getProducts().get(1));
             writer.open();
             writer.write(ac);
             writer.close();
-            assertEquals(2, ac.getProducts().size());
+            assertEquals(3, ac.getProducts().size()); //2
             ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
-            assertEquals(3, ac.getProducts().size());
+            assertEquals(4, ac.getProducts().size());//4
             ac.purchase(ac.getProducts().get(1));
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralAccount.json");
             ac = reader.read();
-            assertEquals(2, ac.getProducts().size());
-            assertEquals(0, ac.getPurchase().size());
+            assertEquals(3, ac.getProducts().size());//2
+           assertEquals(0, ac.getPurchase().size());
             assertEquals(1000, ac.getBalance());
 
+            JsonWriter wr = new JsonWriter("./data/testWriterGeneralAccount.json");
+//            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
+//            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
+//            ac.addToProducts(new Products("Red", 100, "Red"));
+//
+            ac.purchase(ac.getProducts().get(0));
+            ac.purchase(ac.getProducts().get(2));
+            ac.addToProducts(new Products("Product(1)", 100, "Product(1)"));
+            wr.open();
+            wr.write(ac);
+            wr.close();
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");
