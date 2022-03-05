@@ -100,6 +100,8 @@ public class AccountTest {
         testAccount.addToProducts(a);
         testAccount.addToProducts(b);
 
+
+
         assertTrue(testAccount.getProducts().contains(a));
 
         testAccount.purchase(a);

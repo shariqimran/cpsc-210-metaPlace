@@ -2,8 +2,8 @@
     "Products": [
         {
             "price": 100,
-            "name": "Product(2)",
-            "description": "Product(2)"
+            "name": "Product(1)",
+            "description": "Product(1)"
         },
         {
             "price": 100,
@@ -11,6 +11,15 @@
             "description": "Product(2)"
         }
     ],
-    "purchases": [],
+    "purchases": [  {
+      "price": 100,
+      "name": "Product(1)",
+      "description": "Product(1)"
+    },
+      {
+        "price": 100,
+        "name": "Red",
+        "description": "Red"
+      }],
     "Balance": 1000
 }
