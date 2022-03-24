@@ -14,6 +14,7 @@ public class AccountTest {
     private Products a;
     private Products b;
     private Products c;
+    private Products d;
     private Products prod1;
 
     @BeforeEach
@@ -22,6 +23,7 @@ public class AccountTest {
         a = new Products("Red Shirt", 10, "Red");
         b = new Products("Blue Shirt", 10, "Blue");
         c = new Products("Green Shirt", 10, "Green");
+        d = new Products(" Shirt", 10, "shirt");
         prod1 = new Products("prod1", 100, "prod1");
     }
 
@@ -99,14 +101,19 @@ public class AccountTest {
         testAccount.addMoney(20);
         testAccount.addToProducts(a);
         testAccount.addToProducts(b);
+        testAccount.addToProducts(c);
 
 
 
         assertTrue(testAccount.getProducts().contains(a));
 
         testAccount.purchase(a);
+        testAccount.purchase(d);
         testAccount.toJson();
         assertFalse(testAccount.getProducts().contains(a));
+
+        testAccount.purchase(d);
+        testAccount.toJson();
 
 
         testAccount.purchase(b);

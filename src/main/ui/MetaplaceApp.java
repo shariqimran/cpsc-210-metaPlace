@@ -35,36 +35,37 @@ public class MetaplaceApp {
     // MODIFIES: this
     // EFFECTS: processes user input
     private void runMetaplace() {
-        boolean keepGoing = true;
-        String command;
+//        boolean keepGoing = true;
+//        String command;
         init();
-
-        while (keepGoing) {
-            displayMenu();
-            command = sc.next();
-            command = command.toLowerCase();
-            if (command.equals("q")) {
-                saveAccount();
-                keepGoing = false;
-            } else {
-                processMenuCommand(command);
-            }
-        }
-
-        System.out.println("\n---------------------------------");
-        System.out.println("- Thank you for using METAPLACE -");
-        System.out.println("           Goodbye!");
-        System.out.println(("---------------------------------"));
+//
+//        while (keepGoing) {
+//            displayMenu();
+//            command = sc.next();
+//            command = command.toLowerCase();
+//            if (command.equals("q")) {
+//                saveAccount();
+//                keepGoing = false;
+//            } else {
+//                processMenuCommand(command);
+//            }
+//        }
+//
+//        System.out.println("\n---------------------------------");
+//        System.out.println("- Thank you for using METAPLACE -");
+//        System.out.println("           Goodbye!");
+//        System.out.println(("---------------------------------"));
     }
 
     // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // EFFECTS: saves the workroom to file
-    private void saveAccount() {
+    protected void saveAccount() {
         try {
             jsonWriter.open();
             jsonWriter.write(account);
             jsonWriter.close();
             System.out.println("Saved");
+            System.exit(0);
 
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to" + JSON_STORE);
@@ -146,7 +147,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: shows user all products in product list
-    private void viewProducts() {
+    public void viewProducts() {
         System.out.println("\nMETAPLACE");
 
         for (Products product : productsList) {
@@ -229,7 +230,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: displays list menu options, processes user command
-    private void listProducts() {
+    public void listProducts() {
         System.out.println("\nMETAPLACE LISTING");
         System.out.println("-----------------------");
         System.out.println("1) Enter details of Listing");
@@ -293,7 +294,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: shows purchase history to user, processes user command
-    private void viewPurchases() {
+    public void viewPurchases() {
         if (account.getPurchase().isEmpty()) {
             System.out.println("\nPURCHASE HISTORY");
             System.out.println("-----------------------");
@@ -329,7 +330,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: displays wallet menu, processes user commands
-    private void viewWallet() {
+    public void viewWallet() {
         System.out.println("\nWALLET");
         System.out.println("-----------------------");
         System.out.printf("Current Balance: $%.0f%n", account.getBalance());
@@ -376,6 +377,10 @@ public class MetaplaceApp {
             String garbage = sc.next();
             viewWallet();
         }
+    }
+
+    public Account getAccount() {
+        return this.account;
     }
 
     // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)

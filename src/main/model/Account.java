@@ -77,6 +77,7 @@ public class Account implements Writable {
 
 
     // EFFECTS: Removes already purchases Product from Products list
+    // Try using any Sets
     @Override
     public JSONObject toJson() {
         List<String> titlesOfPurchases = new ArrayList<>();
