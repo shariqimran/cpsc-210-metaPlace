@@ -2,17 +2,15 @@ package model;
 
 import org.json.JSONObject;
 import persistence.Writable;
-import ui.MetaplaceApp;
 
 import java.util.*;
-import java.util.function.BooleanSupplier;
 
 // Represents an Account with a list of your purchases (0 initially) and your current balance (0 initially)
 public class Account implements Writable {
 
     private double balance;              // Current balance of account
     private List<Products> purchases;    // Current purchases of account
-    private List<Products> products;     // list of all products on the app
+    private ArrayList<Products> products;     // list of all products on the app
 
     // EFFECTS: creates a List, sets balance to 0
     public Account() {
@@ -46,7 +44,7 @@ public class Account implements Writable {
 //        return null;
     }
 
-    public List<Products> getProducts() {
+    public ArrayList<Products> getProducts() {
         return products;
     }
 
@@ -61,9 +59,9 @@ public class Account implements Writable {
         }
     }
 
-//    public void addToPurchases(Products item) {
-//        purchases.add(item);
-//    }
+    public void addToPurchases(Products item) {
+        purchases.add(item);
+    }
 
     // EFFECTS: returns current balance
     public double getBalance() {
@@ -98,6 +96,10 @@ public class Account implements Writable {
         json.put("Products", products);
 
         return json;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
 

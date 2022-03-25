@@ -15,7 +15,7 @@ public class MetaplaceApp {
 
     private Account account;
     private Account account1;
-    protected List<Products> productsList;
+    protected ArrayList<Products> productsList;
     private Scanner sc;
     private static final String JSON_STORE = "./data/account.json";
     private JsonWriter jsonWriter;

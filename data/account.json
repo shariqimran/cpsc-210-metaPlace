@@ -1,35 +1,31 @@
 {
     "Products": [
         {
-            "price": 500,
-            "name": "Red Shirt",
-            "description": "Used Like New!"
-        },
-        {
-            "price": 6000,
-            "name": "KERS Collectors item",
-            "description": "Limited Edition KERS Black & White Figurine!"
-        },
-        {
-            "price": 10,
-            "name": "Listing",
-            "description": "Listing"
-        },
-        {
             "price": 800,
             "name": "Sapphire Blue Shirt",
             "description": "Brand New!"
         },
         {
-            "price": 10,
-            "name": "Test1",
-            "description": "Test1"
+            "price": 500,
+            "name": "Red Shirt",
+            "description": "Used Like New!"
+        },
+        {
+            "price": 3000,
+            "name": "SM1 Art Piece",
+            "description": "Get Exclusive Product Drops from the SM Website!"
+        },
+        {
+            "price": 3500,
+            "name": "SM2 Art Piece",
+            "description": "Get Exclusive Product Drops from the SM Website!"
+        },
+        {
+            "price": 6000,
+            "name": "KERS Collectors item",
+            "description": "Limited Edition KERS Black & White Figurine!"
         }
     ],
-    "purchases": [{
-        "price": 10,
-        "name": "Listing",
-        "description": "Listing"
-    }],
-    "Balance": 550
+    "purchases": [],
+    "Balance": 10000
 }
