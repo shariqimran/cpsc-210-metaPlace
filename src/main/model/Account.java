@@ -59,10 +59,6 @@ public class Account implements Writable {
         }
     }
 
-    public void addToPurchases(Products item) {
-        purchases.add(item);
-    }
-
     // EFFECTS: returns current balance
     public double getBalance() {
         return balance;
@@ -98,19 +94,4 @@ public class Account implements Writable {
         return json;
     }
 
-    public void setBalance(double balance) {
-        this.balance = balance;
-    }
-
-
-    // EFFECTS: returns things in this workroom as a JSON array
-//    private JSONArray purchasesToJson() {
-//        JSONArray jsonArray = new JSONArray();
-//
-//        for (Products p : purchases) {
-//            jsonArray.put(p.toJson());
-//        }
-//
-//        return jsonArray;
-//    }
 }

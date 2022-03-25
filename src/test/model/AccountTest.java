@@ -103,8 +103,6 @@ public class AccountTest {
         testAccount.addToProducts(b);
         testAccount.addToProducts(c);
 
-
-
         assertTrue(testAccount.getProducts().contains(a));
 
         testAccount.purchase(a);
@@ -120,12 +118,10 @@ public class AccountTest {
         testAccount.toJson();
         assertFalse(testAccount.getProducts().contains(b));
 
-
         testAccount.purchase(prod1);
         testAccount.toJson();
+
         assertFalse(testAccount.getProducts().contains(prod1));
-
-
         assertTrue(testAccount.getProducts().isEmpty());
     }
 
@@ -147,4 +143,5 @@ public class AccountTest {
 
         assertTrue(products.isEmpty());
     }
+
 }

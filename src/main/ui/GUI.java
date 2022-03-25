@@ -279,7 +279,8 @@ public class GUI {
                 account.addMoney(moneyToAdd);
                 balanceLabel.setText("Current Balance: $"
                         + Math.round(account.getBalance()));
-                errorString = "added";
+                errorString = "Successfully added $" + moneyToAdd + "to your account";
+                errorString = "Successfully added $" + moneyToAdd + "to your account";
             } else {
                 errorString = "Input not valid...";
             }
