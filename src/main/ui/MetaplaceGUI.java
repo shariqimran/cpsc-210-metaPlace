@@ -9,7 +9,8 @@ import java.awt.*;
 
 import static javax.swing.JFrame.*;
 
-public class GUI {
+//GUI for MetaplaceApp
+public class MetaplaceGUI {
 
     String errorString;
 
@@ -37,7 +38,8 @@ public class GUI {
     MetaplaceApp metaplaceApp;
     Account account;
 
-    public GUI() {
+    //Effects: runs the GUI, initializes frames
+    public MetaplaceGUI() {
         errorLabel = new JLabel();
 
         returnToMenu = new JButton("Return to Main Menu");
@@ -53,6 +55,7 @@ public class GUI {
         makeApp();
     }
 
+    //Effects: initializes images for first frame
     private void makeApp() {
         ImageIcon imageIcon1 = new ImageIcon("src/main/ui/pics/viewProducts.png");
         Image image1 = imageIcon1.getImage(); // transform it
@@ -77,6 +80,8 @@ public class GUI {
         setGuiMenu(imageIcon1, imageIcon2, imageIcon3, imageIcon4, imageIcon5);
     }
 
+    //Modifies: this
+    //Effects: initializes buttons with its images
     private void setGuiMenu(ImageIcon imageIcon1, ImageIcon imageIcon2,
                             ImageIcon imageIcon3, ImageIcon imageIcon4, ImageIcon imageIcon5) {
         frame.setTitle("METAPLACE");
@@ -103,6 +108,8 @@ public class GUI {
         setFrameGuiMenu();
     }
 
+    //Modifies: this
+    //Effects: adds buttons to main frame
     private void setFrameGuiMenu() {
         frame.add(b1);
         frame.add(b2);
@@ -115,6 +122,8 @@ public class GUI {
         frame.setResizable(false);
     }
 
+    //Modifies: all the frames
+    //Effects: sets all frames to false and main frame to true
     private void returnToMenu() {
         frame.setVisible(true);
         walletFrame.setVisible(false);
@@ -127,6 +136,8 @@ public class GUI {
         viewProductsFrame.getContentPane().removeAll();
     }
 
+    //Modifies: this
+    //Effects: sets layout for viewProductsFrame, creates label
     private void viewGuiProducts() {
         viewProductsFrame.getContentPane().removeAll();
         JPanel labelPane = new JPanel(new GridLayout(0, 1));
@@ -141,6 +152,8 @@ public class GUI {
         addGuiProducts(labelPane);
     }
 
+    //Modifies: this
+    //Effects: adds Products to viewProductsFrame and creates labels and buttons
     private void addGuiProducts(JPanel labelPane) {
         for (Products p : metaplaceApp.productsList) {
             JLabel productName = new JLabel(p.getName());
@@ -151,8 +164,7 @@ public class GUI {
             labelPane.add(productPrice);
             labelPane.add(productDes);
             labelPane.add(purchaseButton);
-            purchaseButton.addActionListener(e -> purchaseThisGui(p, labelPane,
-                    productName, productPrice, productDes, purchaseButton));
+            purchaseButton.addActionListener(e -> purchaseThisGui(p));
             labelPane.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
             viewProductsFrame.add(labelPane, BorderLayout.CENTER);
         }
@@ -164,11 +176,15 @@ public class GUI {
         frame.setVisible(false);
     }
 
-    private void purchaseThisGui(Products p, JPanel panel, JLabel l1, JLabel l2, JLabel l3, JButton btn) {
+    //Modifies: this
+    //Effects: purchases this product
+    private void purchaseThisGui(Products p) {
         account.purchase(p);
         viewGuiProducts();
     }
 
+    //Modifies: this
+    //Effects: sets layout for createListingFrame, creates labels/buttons
     private void listGuiProducts() {
         createListingFrame.setTitle("Create Listing");
         createListingFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -186,6 +202,8 @@ public class GUI {
         setListingGuiFrame(listingName, listingPrice, listingDescription, submit);
     }
 
+    //Modifies: this
+    //Effects: adds buttons/labels to frame
     private void setListingGuiFrame(JLabel listingName, JLabel listingPrice,
                                     JLabel listingDescription, JButton submit) {
         createListingFrame.add(listingName);
@@ -203,6 +221,8 @@ public class GUI {
         frame.setVisible(false);
     }
 
+    //Modifies: this
+    //Effects: adds Product to productsList
     private void createGuiListing() {
         String prodName = listName.getText();
         int prodPrice = Integer.parseInt(listMoney.getText());
@@ -211,6 +231,8 @@ public class GUI {
         metaplaceApp.productsList.add(newProduct);
     }
 
+    //Modifies: this
+    //Effects: sets layout for purchaseHistoryFrame, creates label
     private void viewGuiPurchases() {
         JPanel purchasePane = new JPanel(new GridLayout(0, 1));
         int counter = 0;
@@ -224,6 +246,8 @@ public class GUI {
         addGuiPurchases(purchasePane, counter);
     }
 
+    //Modifies: this
+    //Effects: adds purchases to purchaseHistoryFrame
     private void addGuiPurchases(JPanel purchasePane, int counter) {
         JLabel prodNumb;
         for (Products p : account.getPurchase()) {
@@ -247,6 +271,8 @@ public class GUI {
         frame.setVisible(false);
     }
 
+    //Modifies: this
+    //Effects: sets layout for walletFrame, creates buttons/labels
     private void viewGuiWallet() {
         walletFrame.setTitle("Wallet");
         walletFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -272,6 +298,8 @@ public class GUI {
         frame.setVisible(false);
     }
 
+    //Modifies: this
+    //Effects: adds funds to wallet
     private void addGuiFunds() {
         try {
             int moneyToAdd = Integer.parseInt(enterMoneyText.getText());
@@ -279,17 +307,18 @@ public class GUI {
                 account.addMoney(moneyToAdd);
                 balanceLabel.setText("Current Balance: $"
                         + Math.round(account.getBalance()));
-                errorString = "Successfully added $" + moneyToAdd + "to your account";
-                errorString = "Successfully added $" + moneyToAdd + "to your account";
+                errorString = "Successfully added $" + moneyToAdd + " to your account";
             } else {
                 errorString = "Input not valid...";
             }
         } catch (Exception e) {
-            errorString = "Input not valid...Q";
+            errorString = "Input not valid...";
         }
         errorLabel.setText(errorString);
     }
 
+    //Modifies: this
+    //Effects: saves account
     private void quitApp() {
         metaplaceApp.saveAccount();
     }
