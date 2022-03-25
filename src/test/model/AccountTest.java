@@ -101,28 +101,22 @@ public class AccountTest {
         testAccount.addMoney(20);
         testAccount.addToProducts(a);
         testAccount.addToProducts(b);
-        testAccount.addToProducts(c);
 
         assertTrue(testAccount.getProducts().contains(a));
 
         testAccount.purchase(a);
-        testAccount.purchase(d);
         testAccount.toJson();
         assertFalse(testAccount.getProducts().contains(a));
 
-        testAccount.purchase(d);
-        testAccount.toJson();
-
-
         testAccount.purchase(b);
         testAccount.toJson();
-        assertTrue(testAccount.getProducts().contains(b));
+        assertFalse(testAccount.getProducts().contains(b));
 
         testAccount.purchase(prod1);
         testAccount.toJson();
-
         assertFalse(testAccount.getProducts().contains(prod1));
-        assertFalse(testAccount.getProducts().isEmpty());
+
+        assertTrue(testAccount.getProducts().isEmpty());
     }
 
     //Check if to delete
