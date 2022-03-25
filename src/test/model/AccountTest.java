@@ -116,13 +116,13 @@ public class AccountTest {
 
         testAccount.purchase(b);
         testAccount.toJson();
-        assertFalse(testAccount.getProducts().contains(b));
+        assertTrue(testAccount.getProducts().contains(b));
 
         testAccount.purchase(prod1);
         testAccount.toJson();
 
         assertFalse(testAccount.getProducts().contains(prod1));
-        assertTrue(testAccount.getProducts().isEmpty());
+        assertFalse(testAccount.getProducts().isEmpty());
     }
 
     //Check if to delete
