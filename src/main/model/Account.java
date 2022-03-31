@@ -36,10 +36,11 @@ public class Account implements Writable {
     // TODO: Tests design
     // REQUIRES: Product
     // MODIFIES: this
-    // EFFECTS: adds product to products
+    // EFFECTS: adds product to products, logs event
     public void addToProducts(Products p) {
 //        if (!products.contains(p)) {
         products.add(p);
+        EventLog.getInstance().logEvent(new Event("Added your product: " + p.getName() + " to the Products List"));
 //        }
 //        return null;
     }
@@ -48,7 +49,7 @@ public class Account implements Writable {
         return products;
     }
 
-
+    //I use this for every purchase
     // REQUIRES: balance >= item.getPrice()
     // MODIFIES: this
     // EFFECTS: adds chosen item to purchases list and subtracts price of item from balance
@@ -56,6 +57,7 @@ public class Account implements Writable {
         if (item.getPrice() <= balance) {
             purchases.add(item);
             balance -= item.getPrice();
+            EventLog.getInstance().logEvent(new Event("Purchased Item: " + item.getName()));
         }
     }
 

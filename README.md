@@ -39,6 +39,26 @@ purchase history to be automatically saved.
 - As a user, when I start the application, I want my wallet
 and purchases to load from file.
 
+###*Phase 4: Task 2*
+Thu Mar 31 15:50:06 PDT 2022
+Event log cleared.
+
+
+Thu Mar 31 15:50:09 PDT 2022
+Purchased Item: Sapphire Blue Shirt
+
+
+Thu Mar 31 15:50:31 PDT 2022
+Added your product: TestProduct1 to the Products List
+
+
+Thu Mar 31 15:50:35 PDT 2022
+Purchased Item: SM2 Art Piece
+
+
+Thu Mar 31 15:50:37 PDT 2022
+Purchased Item: TestProduct1
+
 ### Citation:
 - Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
 - JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)

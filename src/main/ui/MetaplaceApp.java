@@ -34,7 +34,7 @@ public class MetaplaceApp {
     // method taken from Teller App, (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
     // MODIFIES: this
     // EFFECTS: processes user input
-    private void runMetaplace() {
+    public void runMetaplace() {
 //        boolean keepGoing = true;
 //        String command;
         init();
@@ -65,6 +65,11 @@ public class MetaplaceApp {
             jsonWriter.write(account);
             jsonWriter.close();
             System.out.println("Saved");
+
+            for (Event el : EventLog.getInstance()) {
+                System.out.println(el.toString() + "\n\n");
+            }
+
             System.exit(0);
 
         } catch (FileNotFoundException e) {
@@ -75,7 +80,7 @@ public class MetaplaceApp {
 
     // MODIFIES: this
     // EFFECTS: initializes account and product list
-    private void init() {
+    public void init() {
 
         loadWorkRoom();
         account = account1;
@@ -108,7 +113,7 @@ public class MetaplaceApp {
 
 
     // EFFECTS: displays menu of options to user
-    private void displayMenu() {
+    public void displayMenu() {
 //        System.out.println(account.getProducts());
 //        System.out.println(account.getPurchase());
         System.out.println("\n-----------------------");
@@ -125,7 +130,7 @@ public class MetaplaceApp {
 
     // MODIFIES: this
     // EFFECTS: processes user command
-    private void processMenuCommand(String command) {
+    public void processMenuCommand(String command) {
         switch (command) {
             case "1":
                 viewProducts();
@@ -163,7 +168,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: displays product menu options, processes user command
-    private void viewProductsOptions() {
+    public void viewProductsOptions() {
         if (productsList.isEmpty()) {
             System.out.println("\nNo items to display!");
         } else {
@@ -190,7 +195,7 @@ public class MetaplaceApp {
 
     // MODIFIES: this
     // EFFECTS: conducts an item transaction
-    private void purchaseItem() {
+    public void purchaseItem() {
         System.out.println("\nPlease enter the number of the item you wish to purchase: ");
 
         if (sc.hasNextInt() && !productsList.isEmpty()) {
@@ -219,7 +224,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: returns purchased item receipt
-    private void productReceipt(Products yourProduct) {
+    public void productReceipt(Products yourProduct) {
         System.out.println("\n   PURCHASE RECEIPT");
         System.out.println("-----------------------");
         System.out.println("Congratulations!");
@@ -255,7 +260,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: processes user command for name in listing menu
-    private void listing() {
+    public void listing() {
         System.out.println("\nYour Listing");
         System.out.println("-----------------------");
         System.out.print("Name: ");
@@ -268,7 +273,7 @@ public class MetaplaceApp {
 
     // MODIFIES: this
     // EFFECTS: creates a listing
-    private void checkListingSpecs(String selectionName) {
+    public void checkListingSpecs(String selectionName) {
         if (sc.hasNextInt()) {
             double selectionPrice = sc.nextInt();
             if (selectionPrice > 0) {
@@ -321,7 +326,7 @@ public class MetaplaceApp {
     }
 
     // EFFECTS: check if user has not entered the right command to proceed
-    private void returnMenuOnViewPurchases(String selection) {
+    public void returnMenuOnViewPurchases(String selection) {
         while (!selection.equals("1")) {
             System.out.println("\nSelection not valid...");
             System.out.println("Please try again!");
@@ -357,7 +362,7 @@ public class MetaplaceApp {
 
     // MODIFIES: this
     // EFFECTS: adds funds in wallet, processes user commands
-    private void addFunds() {
+    public void addFunds() {
         System.out.println("\nPlease enter the amount you wish to add: ");
 
         if (sc.hasNextInt()) {
@@ -386,7 +391,7 @@ public class MetaplaceApp {
     // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
     // MODIFIES: this
     // EFFECTS: loads workroom from file
-    private void loadWorkRoom() {
+    public void loadWorkRoom() {
         try {
             account1 = jsonReader.read();
             System.out.println("Loaded from " + JSON_STORE);

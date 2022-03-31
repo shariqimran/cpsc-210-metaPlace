@@ -1,6 +1,7 @@
 package ui;
 
 import model.Account;
+import model.EventLog;
 import model.Products;
 
 import javax.swing.*;
@@ -13,7 +14,6 @@ import static javax.swing.JFrame.*;
 public class MetaplaceGUI {
 
     String errorString;
-
     JLabel balanceLabel;
     JLabel errorLabel;
 
@@ -41,22 +41,20 @@ public class MetaplaceGUI {
     //Effects: runs the GUI, initializes frames
     public MetaplaceGUI() {
         errorLabel = new JLabel();
-
         returnToMenu = new JButton("Return to Main Menu");
         frame = new JFrame();
         walletFrame = new JFrame();
         purchaseHistoryFrame = new JFrame();
         createListingFrame = new JFrame();
         viewProductsFrame = new JFrame();
-
         metaplaceApp = new MetaplaceApp();
         account = metaplaceApp.getAccount();
-
         makeApp();
     }
 
     //Effects: initializes images for first frame
     private void makeApp() {
+        EventLog.getInstance().clear();
         ImageIcon imageIcon1 = new ImageIcon("src/main/ui/pics/viewProducts.png");
         Image image1 = imageIcon1.getImage(); // transform it
         Image newImg1 = image1.getScaledInstance(170, 90, Image.SCALE_SMOOTH); // scale it the smooth way
@@ -228,7 +226,8 @@ public class MetaplaceGUI {
         int prodPrice = Integer.parseInt(listMoney.getText());
         String prodDes = listDes.getText();
         Products newProduct = new Products(prodName, prodPrice, prodDes);
-        metaplaceApp.productsList.add(newProduct);
+//        metaplaceApp.productsList.add(newProduct);
+        account.addToProducts(newProduct);
     }
 
     //Modifies: this

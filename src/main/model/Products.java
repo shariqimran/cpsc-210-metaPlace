@@ -37,5 +37,4 @@ public class Products {
         return description;
     }
 
-
 }
