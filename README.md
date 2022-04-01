@@ -61,6 +61,12 @@ Purchased Item: TestProduct1
 
 ###*Phase 4: Task 3*
 
+- I would also increase cohesion in my code in the following way:
+
+
+- I would refactor my Account class completely.
+- I would add more classes in my models package to reduce unrelated 
+methods which exist in the accounts class.
 
 ### Citation:
 - Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
