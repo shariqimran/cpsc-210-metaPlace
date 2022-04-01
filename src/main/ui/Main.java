@@ -1,6 +1,6 @@
 package ui;
 
-//Runs Metaplace App
+//Runs MetaplaceGUI
 public class Main {
     public static void main(String[] args) {
         new MetaplaceGUI();

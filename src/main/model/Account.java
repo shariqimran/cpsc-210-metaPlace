@@ -52,7 +52,7 @@ public class Account implements Writable {
     //I use this for every purchase
     // REQUIRES: balance >= item.getPrice()
     // MODIFIES: this
-    // EFFECTS: adds chosen item to purchases list and subtracts price of item from balance
+    // EFFECTS: adds chosen item to purchases list and subtracts price of item from balance, logs event
     public void purchase(Products item) {
         if (item.getPrice() <= balance) {
             purchases.add(item);

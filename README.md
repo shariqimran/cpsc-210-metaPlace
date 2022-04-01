@@ -59,6 +59,9 @@ Purchased Item: SM2 Art Piece
 Thu Mar 31 15:50:37 PDT 2022
 Purchased Item: TestProduct1
 
+###*Phase 4: Task 3*
+
+
 ### Citation:
 - Teller App (https://github.students.cs.ubc.ca/CPSC210/TellerApp)
 - JsonSerializationDemo (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)

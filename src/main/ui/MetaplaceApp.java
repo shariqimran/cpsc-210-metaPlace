@@ -14,7 +14,7 @@ import java.util.*;
 public class MetaplaceApp {
 
     private Account account;
-    private Account account1;
+    //private Account account1;
     protected ArrayList<Products> productsList;
     private Scanner sc;
     private static final String JSON_STORE = "./data/account.json";
@@ -58,7 +58,7 @@ public class MetaplaceApp {
     }
 
     // method taken from JsonSerializationDemo, (https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git)
-    // EFFECTS: saves the workroom to file
+    // EFFECTS: saves the workroom to file, prints Events
     protected void saveAccount() {
         try {
             jsonWriter.open();
@@ -83,7 +83,7 @@ public class MetaplaceApp {
     public void init() {
 
         loadWorkRoom();
-        account = account1;
+//        account = account1;
 
         if (account.getProducts().isEmpty()) {
             Products product1 = new Products("Sapphire Blue Shirt", 800, "Brand New!");
@@ -105,7 +105,8 @@ public class MetaplaceApp {
                 account.addToProducts(p);
             }
         } else {
-            productsList = account1.getProducts();
+//            productsList = account1.getProducts();
+            productsList = account.getProducts();
         }
         sc = new Scanner(System.in);
 
@@ -393,7 +394,8 @@ public class MetaplaceApp {
     // EFFECTS: loads workroom from file
     public void loadWorkRoom() {
         try {
-            account1 = jsonReader.read();
+//            account1 = jsonReader.read();
+            account = jsonReader.read();
             System.out.println("Loaded from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

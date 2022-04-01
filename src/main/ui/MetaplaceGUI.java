@@ -52,7 +52,7 @@ public class MetaplaceGUI {
         makeApp();
     }
 
-    //Effects: initializes images for first frame
+    //Effects: initializes images for first frame, clears EventLog
     private void makeApp() {
         EventLog.getInstance().clear();
         ImageIcon imageIcon1 = new ImageIcon("src/main/ui/pics/viewProducts.png");

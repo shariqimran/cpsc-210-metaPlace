@@ -26,6 +26,7 @@
             "description": "Limited Edition KERS Black & White Figurine!"
         }
     ],
-    "purchases": [],
-    "Balance": 10000
+    "purchases": [
+    ],
+    "Balance": 100000
 }
