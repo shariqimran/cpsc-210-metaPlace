@@ -39,7 +39,7 @@ purchase history to be automatically saved.
 - As a user, when I start the application, I want my wallet
 and purchases to load from file.
 
-###*Phase 4: Task 2*
+### *Phase 4: Task 2*
 Thu Mar 31 15:50:06 PDT 2022
 Event log cleared.
 
@@ -59,7 +59,7 @@ Purchased Item: SM2 Art Piece
 Thu Mar 31 15:50:37 PDT 2022
 Purchased Item: TestProduct1
 
-###*Phase 4: Task 3*
+### *Phase 4: Task 3*
 
 - I would also increase cohesion in my code in the following way:
 
