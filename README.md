@@ -39,6 +39,9 @@ purchase history to be automatically saved.
 - As a user, when I start the application, I want my wallet
 and purchases to load from file.
 
+### *Demo*
+
+
 ### *Phase 4: Task 2*
 Thu Mar 31 15:50:06 PDT 2022
 Event log cleared.
