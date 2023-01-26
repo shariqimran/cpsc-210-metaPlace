@@ -40,7 +40,7 @@ purchase history to be automatically saved.
 and purchases to load from file.
 
 ### *Demo*
-
+https://user-images.githubusercontent.com/69704101/214973237-0e6cf61a-20cf-4e2d-bb14-017529afe139.mov
 
 ### *Phase 4: Task 2*
 Thu Mar 31 15:50:06 PDT 2022
